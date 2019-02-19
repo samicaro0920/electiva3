@@ -45,6 +45,8 @@
             <input name="btnaccion" type="submit" value="Eliminar modulo" />
 
             <input name="btnaccion" type="submit" value="Funcionalidades" />
+            
+            <input type="button" onclick="location.href = '../index.jsp'" value="Volver" name="Volver">
 
         </form>
 

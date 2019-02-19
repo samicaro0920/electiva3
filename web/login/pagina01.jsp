@@ -35,6 +35,8 @@
                     %>
             </fieldset>
         </form>
+            <input type="button" onclick="location.href = '../index.jsp'" value="Volver" name="Volver">
     </center>
+            
 </body>
 </html>

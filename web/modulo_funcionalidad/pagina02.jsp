@@ -33,6 +33,7 @@
             </div>
             <input type="submit" name="btnaccion" value="Enviar"/>
             <input type="submit" name="btnaccion" value="Cancelar">
+            <input type="button" onclick="location.href = 'index.jsp'" value="Volver" name="Volver">
         </form>
        
     </body>

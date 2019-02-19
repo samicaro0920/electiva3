@@ -28,6 +28,7 @@
             <input name="btnaccion" type="submit" value="Actualizar" />
 
             <input name="btnaccion" type="submit" value="Permisos" />
+            <input type="button" onclick="location.href = '../index.jsp'" value="Volver" name="Volver">
 
         </form>
 

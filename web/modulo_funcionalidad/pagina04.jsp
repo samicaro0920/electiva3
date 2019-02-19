@@ -61,6 +61,7 @@
         <input type="submit" value="Crear funcionalidad" name="btnaccion" />
         <input type="submit" value="Modificar funcionalidad" name="btnaccion" />
         <input type="submit" value="Eliminar funcionalidad" name="btnaccion" />
+        <input type="button" onclick="location.href = 'index.jsp'" value="Volver" name="Volver">
         </form>
         
     </body>

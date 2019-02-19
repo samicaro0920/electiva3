@@ -11,13 +11,16 @@ import java.util.logging.Logger;
 import modelo.ModeloModFun;
 
 /**
- * Esta clase contiene todos los metodos generales que van a ser usados por los modelos 
- * @author Sandra Cañas, John Acevedo, Edilberto Mejía 
+ * Esta clase contiene todos los metodos generales que van a ser usados por los
+ * modelos
+ *
+ * @author Sandra Cañas, John Acevedo, Edilberto Mejía
  */
 public class ModeloGeneral {
 
-    protected Conexion conexion;    
-    public ModeloGeneral(){
+    protected Conexion conexion;
+
+    public ModeloGeneral() {
         try {
             conexion = new Conexion();
         } catch (ClassNotFoundException ex) {
@@ -32,8 +35,10 @@ public class ModeloGeneral {
     }
 
     /**
-     * Método que busca en la base de datos la información solicitada por el login y deja acceder al usuario 
-     * si retorna true, en caso contrario muestra mensaje de error.
+     * Método que busca en la base de datos la información solicitada por el
+     * login y deja acceder al usuario si retorna true, en caso contrario
+     * muestra mensaje de error.
+     *
      * @param nombretabla Nombre de la tabla donde se va a buscar la información
      * @param campos Informacion a buscar
      * @param datos HashMap con los datos de un usuario especifico
@@ -66,10 +71,13 @@ public class ModeloGeneral {
     }
 
     /**
-     * Método que inserta en la base de datos segun la tabla especificada con los campos 
+     * Método que inserta en la base de datos segun la tabla especificada con
+     * los campos
+     *
      * @param tabla Nombre de la tabla a la que se le insertarán los datos
      * @param campos datos que se van a insertar en la tabla especificada
-     * @param datos Informacion que contiene los registros del formulario a insertar
+     * @param datos Informacion que contiene los registros del formulario a
+     * insertar
      */
     public void insertar(String tabla, String campos, HashMap datos) {
         try {
@@ -99,12 +107,14 @@ public class ModeloGeneral {
     }
 
     /**
-     *Método que lista la informacion segun la tabla especificada
+     * Método que lista la informacion segun la tabla especificada
+     *
      * @param nombreLista Nombre que identifica al metodo listar
-     * @param select Son los campos que se van a mostrar 
-     * @param from Tabla a consultar 
+     * @param select Son los campos que se van a mostrar
+     * @param from Tabla a consultar
      * @param union Relaciones entre tablas a consultar
-     * @param datos Informacion que contiene los registros del formulario a listar
+     * @param datos Informacion que contiene los registros del formulario a
+     * listar
      */
     public void listar(String nombreLista, String select, String from, String union, HashMap datos) {
         StringBuilder sql = new StringBuilder();
@@ -112,10 +122,10 @@ public class ModeloGeneral {
             String sc[] = select.split(",");
             String selec = select.replace(".", ",");
             String c[] = selec.split(",");
-            System.out.println("asasasasasas"+datos.get(c[1]));
+            System.out.println("asasasasasas" + datos.get(c[1]));
             if (union.equals("")) {
                 sql.append("select ").append(select).append(" from ").append(from);
-                
+
             } else {
                 System.out.println("entreeeeeeeeeeeeeeeee------");
                 sql.append("select ").append(select).append(" from ").append(from).append(" where ");
@@ -150,16 +160,17 @@ public class ModeloGeneral {
         }
 
     }
-     public void listarr(String nombreLista, String select, String from, String union, HashMap datos) {
+
+    public void listarr(String nombreLista, String select, String from, String union, HashMap datos) {
         StringBuilder sql = new StringBuilder();
         try {
             String sc[] = select.split(",");
             String selec = select.replace(".", ",");
             String c[] = selec.split(",");
-            System.out.println("asasasasasas"+datos.get(c[1]));
+            System.out.println("asasasasasas" + datos.get(c[1]));
             if (union.equals("")) {
                 sql.append("select ").append(select).append(" from ").append(from);
-                
+
             } else {
                 System.out.println("entreeeeeeeeeeeeeeeee------");
                 sql.append("select ").append(select).append(" from ").append(from).append(" where ");
@@ -196,7 +207,9 @@ public class ModeloGeneral {
     }
 
     /**
-     * Método que lista la informacion que se va a actualizar del usuario consultado. 
+     * Método que lista la informacion que se va a actualizar del usuario
+     * consultado.
+     *
      * @param nombreLista Nombre que identifica al metodo listarActualizarForm
      * @param camposT Nombre de las variables donde se van a almacenar los datos
      * @param camposDB Campos de la base de datos
@@ -205,42 +218,41 @@ public class ModeloGeneral {
      * @param union Relación de las tablas
      * @param datos HashMap con los datos capturados en el formulario
      */
-    public void listarActualizarForm(String nombreLista,String camposT,String camposDB,String select, String from, String union, HashMap datos) {
+    public void listarActualizarForm(String nombreLista, String camposT, String camposDB, String select, String from, String union, HashMap datos) {
         StringBuilder sql = new StringBuilder();
         try {
-         String selec = select.replace(".", ",");
-         String[] campos_separados = selec.split(",");
-          String[] nombre_separados = camposT.split(",");
-          String[] nombre_separadosDB = camposDB.split(",");
-         String c[] = union.split("=");
-         if (union.equals("")) {
-             
+            String selec = select.replace(".", ",");
+            String[] campos_separados = selec.split(",");
+            String[] nombre_separados = camposT.split(",");
+            String[] nombre_separadosDB = camposDB.split(",");
+            String c[] = union.split("=");
+            if (union.equals("")) {
+
                 sql.append("select *").append(" from ").append(from).append(" where ").append(nombre_separadosDB[0]).append(" = ").append("'").append(datos.get(campos_separados[1])).append("'");
-         
-         } else {
+
+            } else {
                 sql.append("select *").append(" from ").append(from).append(" where ");
-         }
-            if (!union.isEmpty()) {
-             
-                sql.append(union).append(" and ").append(c[1]).append(" = ").append("'").append(datos.get(campos_separados[1])).append("'");
-        
             }
-        
-        
+            if (!union.isEmpty()) {
+
+                sql.append(union).append(" and ").append(c[1]).append(" = ").append("'").append(datos.get(campos_separados[1])).append("'");
+
+            }
+
             ResultSet rs;
             rs = this.conexion.consultarSql(sql.toString());
-            HashMap r=new HashMap();
+            HashMap r = new HashMap();
             if (rs.isBeforeFirst()) {
                 while (rs.next()) {
                     r = new HashMap();
-                   for (int i = 0; i <nombre_separados.length ; i++) {
+                    for (int i = 0; i < nombre_separados.length; i++) {
                         r.put(nombre_separados[i], rs.getString(nombre_separadosDB[i]));
-                      
+
                     }
-                 
+
                 }
             }
-            System.out.println(",, "+ sql);
+            System.out.println(",, " + sql);
             datos.put(nombreLista, r);
             rs.close();
         } catch (Exception e) {
@@ -251,12 +263,13 @@ public class ModeloGeneral {
 
     /**
      * Método que elimina un registro de una tabla especificada
+     *
      * @param tabla Nombre de la tabla a la que se le eliminará el registro
      * @param campos campo que identifica al registro que se va a eliminar
      * @param datos HashMap que contiene el boton eliminar y el campo a eliminar
      */
     public void eliminar(String tabla, String campos, HashMap datos) {
-        System.out.println("datos1"+datos);
+        System.out.println("datos1" + datos);
         try {
             System.out.println("****" + datos.get("rol_id"));
             String[] campos_separados = campos.split(",");
@@ -268,7 +281,7 @@ public class ModeloGeneral {
                 sql.append(campos_separados[i]).append("=");
                 sql.append("'").append(datos.get(campos_separados[i])).append("'");
                 if (i != (campos_separados.length - 1)) {
-                    sql.append(" and ");  
+                    sql.append(" and ");
                 }
             }
             sql.append("");
@@ -287,15 +300,17 @@ public class ModeloGeneral {
     }
 
     /**
-     * Método que actualiza la informacion en la base de datos según la tabla especificada
+     * Método que actualiza la informacion en la base de datos según la tabla
+     * especificada
+     *
      * @param tabla Nombre de la tabla a la cual se le realizarán los cambios
      * @param campos Campos que contienen la informacion a actualiar
-     * @param datos Campos provenientes del formulario 
+     * @param datos Campos provenientes del formulario
      */
     public void actualizar(String tabla, String campos, HashMap datos) {
         //El PRIMER DATO EN EL PARAMETRO CAMPOS TIENE QUE SER EL ID
         try {
-            String[] campos_separados = campos.split(",");            
+            String[] campos_separados = campos.split(",");
             StringBuilder sql = new StringBuilder();
             sql.append("update ").append(tabla).append(" set ");
             for (int i = 1; i < campos_separados.length; i++) {
@@ -314,7 +329,7 @@ public class ModeloGeneral {
             } else {
                 datos.put("mensaje", "Noooooooooooooooooooooooooooooooo ");
             }
-            System.out.println("aaa "+ sql);
+            System.out.println("aaa " + sql);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -322,8 +337,9 @@ public class ModeloGeneral {
 
     /**
      * Metodo que busca y almacena la información del usuario accedido
+     *
      * @param nombreLista identificador del método
-     * @param select campos de la tabla 
+     * @param select campos de la tabla
      * @param from Nombre de la tabla
      * @param union Relación entre tablas
      * @param campo Campo a buscar
