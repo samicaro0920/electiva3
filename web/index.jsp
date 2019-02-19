@@ -21,16 +21,6 @@
         <br>
         <a href="./usuario">Gestion de Usuarios</a>
         <p>
-            <%
-                String error = request.getParameter("error");
-                if (error != null) {
-                    if (error.equalsIgnoreCase("Usuario o clave incorrectos.!! Por favor,intente de nuevo.") || error.equalsIgnoreCase("acceso no permitido")) {
-                        out.print("<font color='red'>" + request.getParameter("error") + "</font>");
-                    } else {
-                        out.print("<font color='green'>" + request.getParameter("error") + "</font>");
-                    }
-                }
-            %>
     </center>
     </body>
 </html>
