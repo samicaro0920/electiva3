@@ -7,12 +7,11 @@
 <%
     HashMap datos = new HashMap();
     datos = (HashMap)request.getAttribute("datos");
-
 %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Funcionlidades</title>
+        <title>Funcionalidades</title>
     </head>
     <body>
         <form action="index.jsp" method="get">
@@ -34,6 +33,7 @@
             int i;
             ArrayList<HashMap> temp;
             temp = (ArrayList) datos.get("funcionalidad");
+            //out.print(temp);
             for (i = 0; i < temp.size(); i++) {
                 out.print("<tr>");
                 out.print("<td>");

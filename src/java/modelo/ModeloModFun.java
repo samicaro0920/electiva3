@@ -58,70 +58,21 @@ public class ModeloModFun extends general.ModeloGeneral {
 
     public void eliminarFuncionalidad(HashMap datos) {
         eliminar("funcionalidad", "fun_id", datos);
-    } 
+    }
 
     public void consultarActualizarFuncionalidad(HashMap datos) {
-        listarActualizarForm("funcionalidad","fun_id,fun_nombre,fun_ruta,fun_descripcion", 
+        listarActualizarForm("funcionalidad", "fun_id,fun_nombre,fun_ruta,fun_descripcion",
                 "fun_id,fun_nombre,fun_ruta,fun_descripcion", "f.fun_id,f.fun_nombre,f.fun_ruta,f.fun_descripcion",
                 "funcionalidad as f", "", datos);
     }
 
     public void modificarFuncionalidad(HashMap datos) {
-        
-                actualizar("funcionalidad","fun_id,fun_nombre,fun_ruta,fun_descripcion,fun_id" , datos);
-    
-//        try {
-//            String sql;
-//            sql = "update funcionalidad set "
-//                    + "fun_id='" + datos.get("fun_id") + "', "
-//                    + "fun_nombre='" + datos.get("fun_nombre") + "', "
-//                    + "fun_ruta='" + datos.get("fun_ruta") + "', "
-//                    + "fun_descripcion='" + datos.get("fun_descripcion") + "' "
-//                    + "where fun_id='" + datos.get("fun_id") + "' ";
-//            int rs;
-//            rs = this.conexion.ejecutarSql(sql);
-//            if (rs > 0) {
-//                datos.put("mensaje", "Actualizado");
-//            } else {
-//                datos.put("mensaje", "No actualizado");
-//            }
-////         
-//        } catch (SQLException ex) {
-//            System.out.println(ex.getMessage());
-//        }
+        actualizar("funcionalidad", "fun_id,fun_nombre,fun_ruta,fun_descripcion,fun_id", datos);
     }
+
     public void listarFuncionalidad(HashMap datos) {
-        //listar("funcionalidad", "fun_id,fun_nombre,fun_ruta,fun_descripcion", "public.funcionalidad ", "mod_id ", datos);
-        try {
-            System.out.println("entro");
-            String sql;
-            ArrayList<HashMap> funcionalidades = new ArrayList<HashMap>();
-            HashMap temp;
+        listarr("funcionalidad", "fu.mod_id,fu.fun_id,fu.fun_nombre,fu.fun_ruta,fu.fun_descripcion", "funcionalidad as fu,modulo as mo", "fu.mod_id=mo.mod_id", datos);
 
-            sql = "select * "
-                    + "from funcionalidad as fu "
-                    + "where mod_id='" + datos.get("mod_id") + "' ";
-
-            ResultSet rs;
-            rs = this.conexion.consultarSql(sql);
-            System.out.println("e" + rs);
-            System.out.println("eeeeeeee" + sql);
-            if (rs.isBeforeFirst()) {
-                while (rs.next()) {
-                    temp = new HashMap();
-
-                    temp.put("fun_id", rs.getString("fun_id"));
-                    temp.put("fun_nombre", rs.getString("fun_nombre"));
-                    temp.put("fun_ruta", rs.getString("fun_ruta"));
-                    temp.put("fun_descripcion", rs.getString("fun_descripcion"));
-
-                    funcionalidades.add(temp);
-                }
-            }            
-            datos.put("funcionalidad", funcionalidades);
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
     }
 
 }

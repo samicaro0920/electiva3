@@ -20,7 +20,7 @@
         <title>JSP Page</title>
     </head>
     <body
-        <h1>StoryBoard moduloxfunc</h1>
+        <h1>MÓDULO X FUNCIONALIDAD</h1>
         <br>
         <br>        
         <form action="index.jsp" method="post">    

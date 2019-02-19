@@ -7,14 +7,17 @@ public class VistaGeneral {
 
     public VistaGeneral() {
     }
-   // metodo que genera un combobox recibiendo un arraly de hashmap con los datos, un string de recibe de el valor que quiere que lleve el value, muestra que es el valor que muestra dento del los option, y nombre_select que es el nomre del desplegable 
+   // 
     /**
-     * 
+     * metodo que genera un combobox recibiendo un ArrayList de hashmap con los datos, 
+     * un string de recibe de el valor que quiere que lleve el value, 
+     * muestra que es el valor que muestra dento del los option, 
+     * y nombre_select que es el nomre del desplegable 
      * @param datos array de HashMap que contiene la informacion necesaria del request
      * @param recibe es el campo de la base de datos que va a tener por valor los option en cada atributo value
      * @param muestra es el campo de la base de datos que va a mostrar cada uno de los option
      * @param nombre_select es el nombre del select que queremos generar
-     * @return devulve un String que contienen la instruccion completa html de un select con sus respectivos option
+     * @return devuelve un String que contienen la instruccion completa html de un select con sus respectivos option
      * 
      */
     public StringBuilder generarComboBox(ArrayList<HashMap> datos,String recibe,String muestra,String nombre_select)
@@ -30,7 +33,7 @@ public class VistaGeneral {
     }
     
     /**
-     * 
+     * Metodo que geneta una tabla con radioButton
      * @param y array de HashMap que contiene la informacion necesaria del request 
      * @param cabecera_tipo vector con la informacion de los campos de la tabla y el tipo de campo defecto o radio
      * @return devulve un String que contienen la instruccion completa html de la tabla completa

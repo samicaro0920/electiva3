@@ -5,6 +5,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * Se encarga de generar la conexion con la base de datos Postgres
+ */
 public class Conexion {
     private String host;
     private String port;

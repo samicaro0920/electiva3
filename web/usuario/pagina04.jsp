@@ -11,6 +11,7 @@
  <% HashMap temp=(HashMap)request.getAttribute("datos");
     String x;
     VistaGeneral vista=new VistaGeneral();
+
  %>
  <html>
      <head>
@@ -54,6 +55,7 @@
              <%
                          ArrayList<HashMap> al=(ArrayList<HashMap>)request.getAttribute("datos1");
                          ArrayList<HashMap> al2=(ArrayList<HashMap>)request.getAttribute("datos2");
+                         
              %>
              <table>
                  <tr>
@@ -75,6 +77,7 @@
                     </th>
                     <th>
                         <%
+
                             x=vista.generarComboBox(al2,"id","nombre","rol_id").toString();
                             out.print(x);
                             %>

@@ -14,11 +14,9 @@ import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 public class ModeloRol extends ModeloGeneral {
 
     Conexion con;
-    
 
     public ModeloRol() {
         try {
@@ -34,8 +32,9 @@ public class ModeloRol extends ModeloGeneral {
             Logger.getLogger(ModeloRol.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     public void listarRol(HashMap x) {
-       listar("datos", "ro.rol_id,ro.rol_nombre,ro.rol_descripcion", "public.rol as ro", "", x);
+        listar("datos", "ro.rol_id,ro.rol_nombre,ro.rol_descripcion", "public.rol as ro", "", x);
     }
 
     public void eliminarRol(HashMap datos) {
@@ -47,9 +46,21 @@ public class ModeloRol extends ModeloGeneral {
     }
 
     public void listarActualizarRol(HashMap datos) {
-        listarActualizarForm("listarol","id,nombre,descripcion",
-                 "rol_id,rol_nombre,rol_descripcion","r.rol_id",
-                 "rol ", "", datos);
+        listarActualizarForm("listarol", "id,nombre,descripcion",
+                "rol_id,rol_nombre,rol_descripcion", "r.rol_id",
+                "rol ", "", datos);
+    }
+
+    public void modificarRol(HashMap datos) {
+        actualizar("public.rol", "rol_id,rol_nombre,rol_descripcion", datos);
+    }
+
+    public void listarModulo(HashMap datos) {
+        listar("datos", "mo.mod_nombre,mo.mod_id,mo.mod_descripcion", "public.modulo as mo", "", datos);
+    }
+
+    public void insertarRolFun(HashMap datos) {
+        insertar("public.rolxfuncionalidad", "rol_id,fun_id", datos);
     }
 
     public void listarActualizarModulo(HashMap datos) {
@@ -76,13 +87,6 @@ public class ModeloRol extends ModeloGeneral {
             System.out.println("se genero un error al listar el rol");
         }
     }
-
-    public void modificarRol(HashMap datos) {
-        actualizar("public.rol", "rol_id,rol_nombre,rol_descripcion", datos);
-    }
-public void listarModulo(HashMap datos) {
-    listar("datos", "mo.mod_nombre,mo.mod_id,mo.mod_descripcion", "public.modulo as mo", "", datos);
-}
 
     public void listarFuncionalidad(HashMap datos) {
         try {
@@ -154,10 +158,6 @@ public void listarModulo(HashMap datos) {
         } catch (SQLException ex) {
             System.out.println("se genero un error al eliminar");
         }
-    }
-
-    public void insertarRolFun(HashMap datos) {
-        insertar("public.rolxfuncionalidad", "rol_id,fun_id", datos);
     }
 
 }

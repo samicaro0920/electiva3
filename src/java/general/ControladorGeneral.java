@@ -1,18 +1,29 @@
+
 package general;
 
 import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
-
+/**
+ * Esta clase se encarga de controlar todos los datos provenientes de los index,formularios y de los modelos
+ * @author Sandra Cañas, John Acevedo, Edilberto Mejía 
+ */
 public class ControladorGeneral {
 
-    private HttpServletRequest request;
-    private HashMap datos;
-    
+    public HttpServletRequest request;
+    public HashMap datos;
+    /**
+     * 
+     * @param request Recibe btnaccion
+     * @param datos   Recibe un HashMap con los datos provenientes de los modelos,intex o paginas
+     */
     public ControladorGeneral(HttpServletRequest request, HashMap datos) {
         this.datos=datos;
         this.request=request;
     }
     
+    /**
+     * Método que se encarga de capturar los parámetros y ponerlos en un HashMap 
+     */
     public void capturarParametros()
     {
        HashMap mapa = (HashMap) this.request.getParameterMap();
@@ -26,9 +37,13 @@ public class ControladorGeneral {
                this.datos.put(nombre, valor[i]);
            } 
        }
-        System.out.println(this.datos);
     }
     
+    /**
+     * Método que captura el botón btnaccion y si viene con valor "null" llama al método listar de
+     * ModeloGeneral
+     * @return  Devuelve el valor de btnaccion
+     */
     public String capturarComando()
     {
        String btnaccion = request.getParameter("btnaccion");
@@ -40,7 +55,10 @@ public class ControladorGeneral {
        }
        return btnaccion;
     }
-
+/**
+ * Metodo que obtiene los datos de los formularios
+ * @return Devuelve un objeto HttpServletRequest con los datos
+ */
     public HttpServletRequest getRequest() {
         return request;
     }
@@ -49,14 +67,19 @@ public class ControladorGeneral {
         this.request = request;
     }
 
+    /**
+     * Metodo que obtiene los datos del HashMap
+     * @return HashMap de Datos
+     */
     public HashMap getDatos() {
         return datos;
     }
 
+    /**
+     * Metodo que asigna los datos en el HashMap
+     * @param datos
+     */
     public void setDatos(HashMap datos) {
         this.datos = datos;
-    }
-    
-    
-    
+    }          
 }

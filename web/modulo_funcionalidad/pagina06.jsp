@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <%
 HashMap temp=(HashMap)request.getAttribute("funcionalidad");
+
     %>
 <html>
     <head>

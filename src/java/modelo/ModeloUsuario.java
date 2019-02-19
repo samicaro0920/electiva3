@@ -63,60 +63,17 @@ public class ModeloUsuario extends ModeloGeneral{
     public void listarActulizarForm(HashMap x) {
       
          listarActualizarForm("valores","id,nombre,apellido,fecha_nacimiento,direccion,correo,clave,usuario","per_id,per_nombre,per_apellido,per_fecha_nacimiento,per_direccion,per_correo,usu_clave,usu_usuario","per.per_id,per.per_nombre,per.per_apellido,per.per_per_fecha_nacimiento,per.per_direccion,per.per_correo,usu.usu_clave,usu.usu_usuario", "usuario as usu,persona as per", "usu.per_id=per.per_id", x);
-//        HashMap temp;
-//        try {
-//            ResultSet rs;
-//            String sql = "select * from persona as pe,usuario as us "
-//                    + "where pe.per_id=us.per_id and pe.per_id='" + (String) x.get("per_id") + "' ";
-//
-//            rs = super.conexion.consultarSql(sql);
-//
-//            if (rs.isBeforeFirst())//pregunta que se pare antes del primero
-//            {
-//                rs.next();
-//                temp = new HashMap();
-//                temp.put("id", rs.getString("per_id"));
-//                temp.put("nombre", rs.getString("per_nombre"));
-//                temp.put("apellido", rs.getString("per_apellido"));
-//                temp.put("nacimiento", rs.getDate("per_fecha_nacimiento"));
-//                temp.put("direccion", rs.getString("per_direccion"));
-//                temp.put("correo", rs.getString("per_correo"));
-//                temp.put("nombre", rs.getString("per_nombre"));
-//                temp.put("usuario", rs.getString("usu_usuario"));
-//                temp.put("clave", rs.getString("usu_clave"));
-//                x.put("valores", temp);
-//            }
-//            rs.close();
-//        } catch (SQLException e) {
-//            System.out.println(e.getMessage());
-//        }
+
     }
 
     public void listaPersonaPermisos(HashMap x) {
+        
          listarActualizarForm("datos","id,nombre,usuario",
                  "per_id,per_nombre,usu_usuario",
                  "per.per_id,per.per_nombre,usu.usu_usuario",
                  "usuario as usu,persona as per", "usu.per_id=per.per_id", x);
     
-//        HashMap temp;
-//        System.out.println("*-"+ x.get("per_id"));
-//        try {
-//            ResultSet rs;
-//            String sql = "select * from persona as pe, usuario as us where pe.per_id=us.per_id and pe.per_id='" + x.get("per_id") + "' ";
-//            rs = super.conexion.consultarSql(sql);
-//            if (rs.isBeforeFirst())//pregunta que se pare antes del primero
-//            {
-//                rs.next();
-//                temp = new HashMap();
-//                temp.put("id", rs.getString("per_id"));
-//                temp.put("nombre", rs.getString("per_nombre"));
-//                temp.put("usuario", rs.getString("usu_usuario"));
-//                x.put("datos", temp);
-//            }
-//            rs.close();
-//        } catch (SQLException e) {
-//            System.out.println(e.getMessage());
-//        }
+
     }
 
     

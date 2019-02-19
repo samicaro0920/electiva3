@@ -83,8 +83,9 @@
         control.capturarParametros();
         modelo.consultarActualizarFuncionalidad(datos);
          HashMap x = (HashMap) datos.get("funcionalidad");
+         x.put("mod_id", datos.get("mod_id"));
         request.setAttribute("funcionalidad", x);            
-        pageContext.forward("pagina06.jsp");
+      pageContext.forward("pagina06.jsp");
 
     } // If para modificar la funcionalidad
     else if (btnaccion.equalsIgnoreCase("Modificar")) {
